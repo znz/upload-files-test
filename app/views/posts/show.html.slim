@@ -1,0 +1,21 @@
+p#notice = notice
+
+p
+  strong Title:
+  = @post.title
+p
+  strong Body:
+  = @post.body
+p
+  strong Attachment:
+  = attachment_image_tag(@post)
+p
+  strong Attachment2:
+  = attachment2_image_tag(@post)
+p
+  strong Attachment3:
+  = attachment3_image_tag(@post)
+
+= link_to 'Edit', edit_post_path(@post)
+'|
+= link_to 'Back', posts_path

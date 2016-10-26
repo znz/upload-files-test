@@ -1,0 +1,36 @@
+= form_for @post do |f|
+  - if @post.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+      ul
+        - @post.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :body
+    = f.text_area :body
+  .field
+    = f.label :attachment
+    = f.file_field :attachment
+    = f.hidden_field :attachment_cache
+    - if @post.try(:attachment?)
+      = check_box_tag :'post[remove_attachment]', 1
+      = attachment_image_tag(@post)
+  .field
+    = f.label :attachment2
+    = f.file_field :attachment2
+    = f.hidden_field :attachment2_cache
+    - if @post.try(:attachment2?)
+      = check_box_tag :'post[remove_attachment2]', 1
+      = attachment2_image_tag(@post)
+  .field
+    = f.label :attachment3
+    = f.file_field :attachment3
+    = f.hidden_field :attachment3_cache
+    - if @post.try(:attachment3?)
+      = check_box_tag :'post[remove_attachment3]', 1
+      = attachment3_image_tag(@post)
+  .actions = f.submit

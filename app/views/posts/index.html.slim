@@ -1,0 +1,31 @@
+h1 Listing posts
+
+table
+  thead
+    tr
+      th Title
+      th Body
+      th Attachment
+      th Attachment2
+      th Attachment3
+      th
+      th
+      th
+
+  tbody
+    - @posts.each do |post|
+      tr
+        td = post.title
+        td = post.body
+        td = attachment_image_tag(post)
+        td = attachment2_image_tag(post)
+        td = attachment3_image_tag(post)
+        td = link_to 'Show', post
+        td = link_to 'Edit', edit_post_path(post)
+        td = link_to 'Destroy', post, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Post', new_post_path
+
+= render 'inline_form'
